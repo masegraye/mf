@@ -27,7 +27,7 @@
  * Website: http://www.timdown.co.uk/jshashtable/
  */
 
-Hashtable = require("commons/collection/hashtable");
+Hashtable = require("./hashtable");
 
 function HashSet(hashingFunction, equalityFunction) {
     var hashTable = new Hashtable(hashingFunction, equalityFunction);
