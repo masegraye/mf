@@ -1,5 +1,6 @@
 Logger = require "jack"
 Log = Logger.create "mf"
+ComponentLoader = require "./commons/util/componentLoader"
 
 ########################################################
 # MfExecuctionContextDetector
@@ -299,5 +300,8 @@ class MfSequencer
 # This aids in unit testing internal components without making them public
 if mf.context().testMode()
   mf.core.registerKlass "MfExecutionContextDetector", MfExecutionContextDetector
+
+# Binds componentLoader.component to mf.component
+componentLoader = new ComponentLoader(require, mf)
 
 module.exports = mf

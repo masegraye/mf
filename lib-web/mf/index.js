@@ -1,10 +1,12 @@
 (function() {
-  var Log, Logger, Mf, MfCore, MfExecutionContextDetector, MfNotificationCenter, MfSequencer, MfTaskManager, mf;
+  var ComponentLoader, Log, Logger, Mf, MfCore, MfExecutionContextDetector, MfNotificationCenter, MfSequencer, MfTaskManager, componentLoader, mf;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; }, __slice = Array.prototype.slice;
 
   Logger = require("jack");
 
   Log = Logger.create("mf");
+
+  ComponentLoader = require("./commons/util/componentLoader");
 
   MfExecutionContextDetector = (function() {
     var MfExecutionContext, NodeExecutionContext, WebExecutionContext;
@@ -414,6 +416,8 @@
   if (mf.context().testMode()) {
     mf.core.registerKlass("MfExecutionContextDetector", MfExecutionContextDetector);
   }
+
+  componentLoader = new ComponentLoader(require, mf);
 
   module.exports = mf;
 
