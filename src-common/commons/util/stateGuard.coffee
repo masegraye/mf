@@ -1,9 +1,9 @@
-Set = require "commons/collection/set"
+Set = require("mf").component "commons/collection/set"
 _ = require "underscore"
 
 class StateGuard
   constructor: (possibleStates...) ->
-    @possibleStates = new Set(possibleStates...)    
+    @possibleStates = new Set(possibleStates...)
     @recordedStates = new Set()
   require: (requiredStates...) ->
     allPresent = _.all requiredStates, (s) =>
@@ -14,7 +14,7 @@ class StateGuard
   prevent: (preventedStates...) ->
     preventers = _.any preventedStates, (s) =>
       @recordedStates.contains(s)
-    
+
     if preventers
       throw new Error("State prevention requested. Wanted to prevent: (#{preventedStates.join(", ")}); states recorded: (#{@recordedStates.toString()})")
     this
@@ -29,7 +29,7 @@ class StateGuard
   reset: ->
     @recordedStates.clear()
     @recordedStates = new Set()
-    
+
 StateGuard::deny = StateGuard::prevent
 
 module.exports = StateGuard

@@ -16,7 +16,10 @@
   "engines": {
     "node": "~0.6.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "underscore": "= 1.2.2",
+    "underscore.string": "= 2.0.0"
+  },
   "devDependencies": {
     "mf-tools" : "git+ssh://git@github.com:massivelyfun/mf-tools.git",
     "jack" : "git+ssh://git@github.com:massivelyfun/jack.git",

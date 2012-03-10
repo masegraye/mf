@@ -23,6 +23,7 @@ testBuilder = new TestBuilder()
   .includePaths("lib-node")
   .tests({
     mf: "test/mf/*.coffee"
+    commons: "test/mf/commons/*.coffee"
   })
   .task(task)
   .build()
