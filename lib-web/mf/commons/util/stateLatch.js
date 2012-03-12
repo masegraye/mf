@@ -1,7 +1,7 @@
 (function() {
   var StateLatch, mf;
 
-  mf = require("mf");
+  mf = require("../../mf");
 
   StateLatch = (function() {
 

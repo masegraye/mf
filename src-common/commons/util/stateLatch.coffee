@@ -1,4 +1,4 @@
-mf = require "mf"
+mf = require "../../mf"
 
 class StateLatch
   constructor: (taskManager, evts, onAllFiredCb) ->

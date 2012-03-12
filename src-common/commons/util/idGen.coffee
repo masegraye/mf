@@ -1,4 +1,4 @@
-Uuid = require("mf").component "commons/util/uuid"
+Uuid = require("../../mf").component "commons/util/uuid"
 
 class IdGen
   generate: (token) ->

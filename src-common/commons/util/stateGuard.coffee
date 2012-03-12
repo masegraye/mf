@@ -1,4 +1,4 @@
-Set = require("mf").component "commons/collection/set"
+Set = require("../../mf").component "commons/collection/set"
 _ = require "underscore"
 
 class StateGuard

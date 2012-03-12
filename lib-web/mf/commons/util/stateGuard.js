@@ -2,7 +2,7 @@
   var Set, StateGuard, _;
   var __slice = Array.prototype.slice;
 
-  Set = require("mf").component("commons/collection/set");
+  Set = require("../../mf").component("commons/collection/set");
 
   _ = require("underscore");
 

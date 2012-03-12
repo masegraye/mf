@@ -1,7 +1,7 @@
 (function() {
   var IdGen, Uuid;
 
-  Uuid = require("mf").component("commons/util/uuid");
+  Uuid = require("../../mf").component("commons/util/uuid");
 
   IdGen = (function() {
 
