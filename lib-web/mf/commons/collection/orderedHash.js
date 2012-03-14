@@ -45,7 +45,7 @@
 
     OrderedHash.prototype.toArray = function() {
       var ar, node;
-      if (!this._dirty) return this._arrayCache;
+      if (!this._dirty) return this._arrayCache.slice();
       node = this._head;
       ar = [];
       while (node !== null) {
@@ -53,7 +53,8 @@
         node = node._next;
       }
       this._dirty = false;
-      return this._arrayCache = ar;
+      this._arrayCache = ar;
+      return ar.slice();
     };
 
     return OrderedHash;
