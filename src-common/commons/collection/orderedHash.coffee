@@ -32,6 +32,7 @@ class OrderedHash
     prev._next = node._next if prev
 
     @_head = next if prev == null
+    @_tail = prev if next == null
 
     delete @_nodes[k]
     @_dirty = true

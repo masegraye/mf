@@ -37,6 +37,7 @@
       if (next) next._prev = node._prev;
       if (prev) prev._next = node._next;
       if (prev === null) this._head = next;
+      if (next === null) this._tail = prev;
       delete this._nodes[k];
       this._dirty = true;
       return node._obj;
