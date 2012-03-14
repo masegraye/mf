@@ -32,13 +32,14 @@ class OrderedHash
     prev._next = node._next if prev
 
     @_head = next if prev == null
+    @_tail = prev if next == null
 
     delete @_nodes[k]
     @_dirty = true
     return node._obj
 
   toArray: ->
-    return @_arrayCache unless @_dirty
+    return @_arrayCache.slice() unless @_dirty
     node = @_head
     ar   = []
     while node != null
@@ -46,6 +47,7 @@ class OrderedHash
       node = node._next
     @_dirty      = false
     @_arrayCache = ar
+    ar.slice()
 
 class Node
   constructor: (obj, prev = null, next = null) ->

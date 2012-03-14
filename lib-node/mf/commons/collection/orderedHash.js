@@ -37,6 +37,7 @@
       if (next) next._prev = node._prev;
       if (prev) prev._next = node._next;
       if (prev === null) this._head = next;
+      if (next === null) this._tail = prev;
       delete this._nodes[k];
       this._dirty = true;
       return node._obj;
@@ -44,7 +45,7 @@
 
     OrderedHash.prototype.toArray = function() {
       var ar, node;
-      if (!this._dirty) return this._arrayCache;
+      if (!this._dirty) return this._arrayCache.slice();
       node = this._head;
       ar = [];
       while (node !== null) {
@@ -52,7 +53,8 @@
         node = node._next;
       }
       this._dirty = false;
-      return this._arrayCache = ar;
+      this._arrayCache = ar;
+      return ar.slice();
     };
 
     return OrderedHash;
