@@ -25,3 +25,5 @@ class CountdownLatch
     if @_curr >= @_steps and not @_firing
       @_firing = true
       mf.core.taskManager().runTaskFast @_onDone
+
+module.exports = CountdownLatch
