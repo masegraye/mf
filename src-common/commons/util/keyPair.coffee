@@ -1,4 +1,7 @@
 class KeyPair
+  @get: (x, y) ->
+    new @(x, y)
+
   constructor: (@x, @y) ->
 
   hashCode: ->
@@ -9,5 +12,8 @@ class KeyPair
 
   equals: (other) ->
     other.x == @x and other.y == @y
+
+  toString: () ->
+    "[#{@x},#{@y}]"
 
 module.exports = KeyPair
