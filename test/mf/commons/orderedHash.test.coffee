@@ -66,6 +66,55 @@ suite "Ordered Hash", () ->
 
     assert.ok o.remove('foo')
 
-    console.dir o.toArray()
     for [x, y], k in _.zip(o.toArray(), [obj2, obj3])
       assert.equal x, y
+
+  test "Iterator", () ->
+    assert.ok o = new OrderedHash
+    assert.ok o.append 'foo', obj1 = {foo: 'baz'}
+    assert.ok o.append 'bar', obj2 = {bar: 'baz'}
+    assert.ok o.append 'baz', obj3 = {baz: 'baz'}
+
+    assert.ok iter = o.getIterator()
+
+    assert.equal iter(), obj1
+    assert.equal iter(), obj2
+    assert.equal iter(), obj3
+    assert.equal iter(), null
+
+  test "Iterator by key", () ->
+    assert.ok o = new OrderedHash
+    assert.ok o.append 'foo', obj1 = {foo: 'baz'}
+    assert.ok o.append 'bar', obj2 = {bar: 'baz'}
+    assert.ok o.append 'baz', obj3 = {baz: 'baz'}
+
+    assert.ok iter = o.getIteratorById('bar')
+
+    assert.equal iter(), obj2
+    assert.equal iter(), obj3
+    assert.equal iter(), null
+
+  test "Reverse Iterator", () ->
+    assert.ok o = new OrderedHash
+    assert.ok o.append 'foo', obj1 = {foo: 'baz'}
+    assert.ok o.append 'bar', obj2 = {bar: 'baz'}
+    assert.ok o.append 'baz', obj3 = {baz: 'baz'}
+
+    assert.ok iter = o.getReverseIterator()
+
+    assert.equal iter(), obj3
+    assert.equal iter(), obj2
+    assert.equal iter(), obj1
+    assert.equal iter(), null
+
+  test "Reverse Iterator by key", () ->
+    assert.ok o = new OrderedHash
+    assert.ok o.append 'foo', obj1 = {foo: 'baz'}
+    assert.ok o.append 'bar', obj2 = {bar: 'baz'}
+    assert.ok o.append 'baz', obj3 = {baz: 'baz'}
+
+    assert.ok iter = o.getReverseIteratorById('bar')
+
+    assert.equal iter(), obj2
+    assert.equal iter(), obj1
+    assert.equal iter(), null

@@ -43,6 +43,40 @@
       return node._obj;
     };
 
+    OrderedHash.prototype.getIterator = function(curr) {
+      if (curr == null) curr = this._head;
+      return function() {
+        var ret;
+        if (curr === null) return null;
+        ret = curr._obj;
+        curr = curr._next;
+        return ret;
+      };
+    };
+
+    OrderedHash.prototype.getIteratorById = function(k) {
+      var node;
+      node = this._nodes[k];
+      return this.getIterator(node);
+    };
+
+    OrderedHash.prototype.getReverseIterator = function(curr) {
+      if (curr == null) curr = this._tail;
+      return function() {
+        var ret;
+        if (curr === null) return null;
+        ret = curr._obj;
+        curr = curr._prev;
+        return ret;
+      };
+    };
+
+    OrderedHash.prototype.getReverseIteratorById = function(k) {
+      var node;
+      node = this._nodes[k];
+      return this.getReverseIterator(node);
+    };
+
     OrderedHash.prototype.toArray = function() {
       var ar, node;
       if (!this._dirty) return this._arrayCache.slice();
