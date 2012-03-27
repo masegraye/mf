@@ -38,6 +38,28 @@ class OrderedHash
     @_dirty = true
     return node._obj
 
+  getIterator: (curr = @_head) ->
+    ->
+      return null if curr == null
+      ret  = curr._obj
+      curr = curr._next
+      ret
+
+  getIteratorById: (k) ->
+    node = @_nodes[k]
+    @getIterator(node)
+
+  getReverseIterator: (curr = @_tail) ->
+    ->
+      return null if curr == null
+      ret  = curr._obj
+      curr = curr._prev
+      ret
+
+  getReverseIteratorById: (k) ->
+    node = @_nodes[k]
+    @getReverseIterator(node)
+
   toArray: ->
     return @_arrayCache.slice() unless @_dirty
     node = @_head
