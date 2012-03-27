@@ -3,6 +3,8 @@ assert = harness.assert
 mf            = require "mf"
 KeyPair       = mf.component "commons/util/keyPair"
 
+class FooPair extends KeyPair
+
 suite "KeyPair", ->
   test "Test sanity", ->
     assert.ok new KeyPair()
@@ -25,3 +27,14 @@ suite "KeyPair", ->
       else
         hsh[kp.hashCode()] = [x, y]
 
+  test "Get works", ->
+    k = new KeyPair(0,0)
+    assert.ok kp = KeyPair.get(0, 0)
+    assert.ok fp = FooPair.get(0, 0)
+    assert.equal k.hashCode(), kp.hashCode()
+    assert.equal k.hashCode(), fp.hashCode()
+
+  test "toString works", ->
+    assert.ok kp = new KeyPair(0, 0)
+
+    assert.isString kp.toString()

@@ -3,6 +3,10 @@
 
   KeyPair = (function() {
 
+    KeyPair.get = function(x, y) {
+      return new this(x, y);
+    };
+
     function KeyPair(x, y) {
       this.x = x;
       this.y = y;
@@ -18,6 +22,10 @@
 
     KeyPair.prototype.equals = function(other) {
       return other.x === this.x && other.y === this.y;
+    };
+
+    KeyPair.prototype.toString = function() {
+      return "[" + this.x + "," + this.y + "]";
     };
 
     return KeyPair;
