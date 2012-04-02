@@ -419,6 +419,8 @@
 
   componentLoader = new ComponentLoader(require, mf);
 
+  componentLoader.registerShortcut("commons/geometry", "geometry");
+
   module.exports = mf;
 
 }).call(this);

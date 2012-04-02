@@ -303,5 +303,6 @@ if mf.context().testMode()
 
 # Binds componentLoader.component to mf.component
 componentLoader = new ComponentLoader(require, mf)
+componentLoader.registerShortcut "commons/geometry", "geometry"
 
 module.exports = mf
