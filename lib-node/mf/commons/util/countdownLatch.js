@@ -21,6 +21,9 @@
         default:
           throw new Error("Expected either a callback, or a step number and callback");
       }
+      if (this._steps < 1) {
+        throw new Error("Expected at least one step in CountdownLatch.");
+      }
       this._curr = 0;
       this._firing = false;
       this._maybeFire();

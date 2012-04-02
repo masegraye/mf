@@ -33,6 +33,15 @@ root.rect.points = (rect) ->
     pm(rect.point.x, rect.point.y + rect.size.height) # Bottom left
   ]
 
+# Returns all the whole-number points within the provided rect.
+root.rect.surfacePoints = (rect) ->
+  pts = []
+  for y in [0..(Math.floor(rect.size.width))]
+    for x in [0..(Math.floor(rect.size.height))]
+      do (x,y) ->
+        pts.push root.point.make(rect.point.x + x, rect.point.y + y)
+  pts
+
 root.rect.intersects = (rect1, rect2) ->
   for pt in root.rect.points(rect2)
     return true if root.rect.contains(rect1, pt)

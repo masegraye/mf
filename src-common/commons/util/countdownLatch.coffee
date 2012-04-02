@@ -12,6 +12,9 @@ class CountdownLatch
       else
         throw new Error("Expected either a callback, or a step number and callback")
 
+    if @_steps < 1
+      throw new Error("Expected at least one step in CountdownLatch.")
+
     @_curr = 0
     @_firing = false
 

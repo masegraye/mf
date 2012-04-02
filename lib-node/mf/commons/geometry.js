@@ -42,6 +42,10 @@
     return new Point(x, y);
   };
 
+  root.point.distance = function(pt1, pt2) {
+    return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
+  };
+
   root.point.ZERO = root.point.make(0, 0);
 
   root.size = {};
@@ -64,6 +68,20 @@
 
   root.rect.points = function(rect) {
     return [pm(rect.point.x, rect.point.y), pm(rect.point.x + rect.size.width, rect.point.y), pm(rect.point.x + rect.size.width, rect.point.y + rect.size.height), pm(rect.point.x, rect.point.y + rect.size.height)];
+  };
+
+  root.rect.surfacePoints = function(rect) {
+    var pts, x, y, _fn, _ref, _ref2;
+    pts = [];
+    for (y = 0, _ref = Math.floor(rect.size.width); 0 <= _ref ? y <= _ref : y >= _ref; 0 <= _ref ? y++ : y--) {
+      _fn = function(x, y) {
+        return pts.push(root.point.make(rect.point.x + x, rect.point.y + y));
+      };
+      for (x = 0, _ref2 = Math.floor(rect.size.height); 0 <= _ref2 ? x <= _ref2 : x >= _ref2; 0 <= _ref2 ? x++ : x--) {
+        _fn(x, y);
+      }
+    }
+    return pts;
   };
 
   root.rect.intersects = function(rect1, rect2) {
