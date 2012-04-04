@@ -5,6 +5,8 @@
 # was constructed (implicitly - since they pass in their require function, which is bound
 # to their current directory).
 class ComponentLoader
+  @wire: (requireFun, target) ->
+    new this(requireFun, target)
   # Root should be the location where you wish requires to be relative to.
   # In node, this isn't necessary, but it is for stitch.
 
