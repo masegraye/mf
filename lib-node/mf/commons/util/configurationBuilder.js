@@ -54,6 +54,14 @@
         }
         return hasAll;
       };
+      unions.sort(function(ary1, ary2) {
+        if (ary1.length === ary2.length) return 0;
+        if (ary1.length < ary2.length) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
       _fn = function(union) {
         var k, unionKey, v, _results;
         if (containsAll(_this.scopes, union)) {

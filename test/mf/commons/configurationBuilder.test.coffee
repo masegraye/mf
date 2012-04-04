@@ -29,6 +29,8 @@ suite "Configuration Builder", () ->
 
   test "can set with scope unions", () ->
     rawConfig =
+      "scopeThree+NOSCOPE":
+        "testSix" : 6
       "scopeOne":
         "testOne": 1
       "scopeTwo":
@@ -39,8 +41,6 @@ suite "Configuration Builder", () ->
         "testFour": 4
       "scopeTwo+scopeThree":
         "testFive": 5
-      "scopeThree+NOSCOPE":
-        "testSix" : 6
 
     assert.ok config = ConfigurationBuilder.build rawConfig, ["scopeOne", "scopeTwo", "scopeThree"]
 
@@ -53,14 +53,14 @@ suite "Configuration Builder", () ->
 
   test "unioned scopes override individual scopes", () ->
     rawConfig =
+      "scopeOne+scopeTwo":
+        "testThree" : 4
       "scopeOne":
         "testOne": 1
         "testTwo": 2
       "scopeTwo":
         "testThree": 3
         "testFour": 4
-      "scopeOne+scopeTwo":
-        "testThree" : 4
 
     assert.ok config = ConfigurationBuilder.build rawConfig, ["scopeOne", "scopeTwo"]
 

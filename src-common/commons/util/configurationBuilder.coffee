@@ -29,6 +29,10 @@ class ConfigurationBuilder
           break
       hasAll
 
+    unions.sort (ary1, ary2) ->
+      return 0 if ary1.length == ary2.length
+      if ary1.length < ary2.length then return -1 else return 1
+
     for union in unions
       do (union) =>
         if containsAll(@scopes, union)
