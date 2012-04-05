@@ -4,6 +4,10 @@
 
   ComponentLoader = (function() {
 
+    ComponentLoader.wire = function(requireFun, target) {
+      return new this(requireFun, target);
+    };
+
     function ComponentLoader(_requireFun, target) {
       this._requireFun = _requireFun;
       this.component = __bind(this.component, this);
