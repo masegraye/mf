@@ -60,6 +60,14 @@
     return new Rect(new Point(x, y), new Size(width, height));
   };
 
+  root.rect.makeFromGridBounds = function(ulBound, lrBound) {
+    var height, width, x, y;
+    x = ulBound.gridX, y = ulBound.gridY;
+    width = lrBound.gridX - x;
+    height = lrBound.gridY - y;
+    return root.rect.make(x, y, width, height);
+  };
+
   root.rect.ZERO = root.rect.make(0, 0, 0, 0);
 
   root.rect.area = function(rect) {
