@@ -307,5 +307,8 @@ componentLoader.registerShortcut "commons/geometry", "geometry"
 componentLoader.registerShortcut "commons/util/configuration", "configuration"
 componentLoader.registerShortcut "commons/util/componentLoader", "componentLoader"
 componentLoader.registerShortcut "commons/util/configurationBuilder", "configurationBuilder"
-
+componentLoader.registerShortcut "commons/util/stateLatch", "stateLatch"
+componentLoader.registerShortcut "commons/util/countdownLatch", "countdownLatch"
+componentLoader.registerShortcut "commons/util/uuid", "uuid"
+componentLoader.registerShortcut "commons/collection/hashtable", "hashtable"
 module.exports = mf

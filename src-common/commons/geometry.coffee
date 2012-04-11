@@ -22,6 +22,13 @@ root.size.make = (width, height) -> new Size(width, height)
 
 root.rect = {}
 root.rect.make = (x,y,width,height) -> new Rect(new Point(x,y), new Size(width,height))
+
+root.rect.makeFromGridBounds = (ulBound, lrBound) ->
+  {gridX:x, gridY:y} = ulBound
+  width = lrBound.gridX - x
+  height = lrBound.gridY - y
+  root.rect.make x, y, width, height
+
 root.rect.ZERO = root.rect.make(0,0,0,0)
 root.rect.area = (rect) -> rect.size.width * rect.size.height
 
