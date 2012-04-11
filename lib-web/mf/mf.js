@@ -433,6 +433,8 @@
 
   componentLoader.registerShortcut("commons/util/uuid", "uuid");
 
+  componentLoader.registerShortcut("commons/collection/hashtable", "hashtable");
+
   module.exports = mf;
 
 }).call(this);

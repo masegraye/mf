@@ -310,5 +310,5 @@ componentLoader.registerShortcut "commons/util/configurationBuilder", "configura
 componentLoader.registerShortcut "commons/util/stateLatch", "stateLatch"
 componentLoader.registerShortcut "commons/util/countdownLatch", "countdownLatch"
 componentLoader.registerShortcut "commons/util/uuid", "uuid"
-
+componentLoader.registerShortcut "commons/collection/hashtable", "hashtable"
 module.exports = mf
