@@ -431,6 +431,8 @@
 
   componentLoader.registerShortcut("commons/util/countdownLatch", "countdownLatch");
 
+  componentLoader.registerShortcut("commons/util/uuid", "uuid");
+
   module.exports = mf;
 
 }).call(this);
