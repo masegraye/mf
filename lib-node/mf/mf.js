@@ -257,6 +257,14 @@
       return task;
     };
 
+    MfTaskManager.prototype.ticker = function() {
+      var self;
+      self = this;
+      return function(fun) {
+        if (fun != null) return self.runTaskFast(fun);
+      };
+    };
+
     return MfTaskManager;
 
   })();
