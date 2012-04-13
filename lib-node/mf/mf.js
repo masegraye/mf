@@ -111,6 +111,16 @@
 
   MfCore = (function() {
 
+    MfCore.prototype.shallowClone = function(obj) {
+      var k, newObj, v;
+      newObj = {};
+      for (k in obj) {
+        v = obj[k];
+        newObj[k] = v;
+      }
+      return newObj;
+    };
+
     function MfCore(mf) {
       this.mf = mf;
       this.klasses = {};
@@ -255,6 +265,14 @@
       }).call(this);
       if ((id != null) && (id[0] != null)) clearInterval(id[0]);
       return task;
+    };
+
+    MfTaskManager.prototype.ticker = function() {
+      var self;
+      self = this;
+      return function(fun) {
+        if (fun != null) return self.runTaskFast(fun);
+      };
     };
 
     return MfTaskManager;

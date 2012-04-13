@@ -85,6 +85,10 @@ class Mf
 
 # Namespace for mf.core
 class MfCore
+  shallowClone: (obj) ->
+    newObj = {}
+    newObj[k] = v for k,v of obj
+    newObj
   constructor: (mf) ->
     @mf = mf
     @klasses = {}
@@ -212,6 +216,13 @@ class MfTaskManager
     if id? && id[0]?
       clearInterval id[0]
     task
+  # Returns a function that will (maybe) run funs passed to it
+  # in the next tick.
+  ticker: ->
+    self = @
+    (fun) ->
+      if fun?
+        self.runTaskFast fun
 
 MfTaskManager::global = ->
   @_taskManager ||= new MfTaskManager("global")
