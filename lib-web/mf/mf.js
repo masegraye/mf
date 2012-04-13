@@ -111,6 +111,16 @@
 
   MfCore = (function() {
 
+    MfCore.prototype.shallowClone = function(obj) {
+      var k, newObj, v;
+      newObj = {};
+      for (k in obj) {
+        v = obj[k];
+        newObj[k] = v;
+      }
+      return newObj;
+    };
+
     function MfCore(mf) {
       this.mf = mf;
       this.klasses = {};
