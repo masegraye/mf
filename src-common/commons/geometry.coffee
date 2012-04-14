@@ -29,6 +29,9 @@ root.rect.makeFromGridBounds = (ulBound, lrBound) ->
   height = lrBound.gridY - y
   root.rect.make x, y, width, height
 
+root.rect.toGridBounds = (rect) ->
+  [{gridX: rect.point.x, gridY:rect.point.y}, {gridX:(rect.point.x + rect.size.width), gridY:(rect.point.y + rect.size.height)}]
+
 root.rect.ZERO = root.rect.make(0,0,0,0)
 root.rect.area = (rect) -> rect.size.width * rect.size.height
 
