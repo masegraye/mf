@@ -117,7 +117,7 @@
   root.rect.contains = function(rect, pt) {
     var bl, br, tl, tr, _ref;
     _ref = root.rect.points(rect), tl = _ref[0], tr = _ref[1], br = _ref[2], bl = _ref[3];
-    return pt.x >= tl.x && pt.x <= br.x && pt.y >= tl.y && pt.y <= br.y;
+    return (pt.x >= tl.x) && (pt.x <= br.x) && (pt.y >= tl.y) && (pt.y <= br.y);
   };
 
   module.exports = root;
