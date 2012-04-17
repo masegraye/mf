@@ -60,6 +60,6 @@ root.rect.intersects = (rect1, rect2) ->
 root.rect.contains = (rect, pt) ->
   [tl, tr, br, bl] = root.rect.points(rect)
   # Touching a line is "in"
-  pt.x >= tl.x && pt.x <= br.x && pt.y >= tl.y && pt.y <= br.y
+  (pt.x >= tl.x) && (pt.x <= br.x) && (pt.y >= tl.y) && (pt.y <= br.y)
 
 module.exports = root
