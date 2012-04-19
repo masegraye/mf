@@ -8,7 +8,7 @@ class Configuration
 
   # Exists solely for the purpose of determining if this is a configuration object
   # or not.
-  _tooFancy: ->
+  _mfConfig: ->
     true
   # Defines get and set methods based on the configuration prototype
   # passed in. Proto is expected to be an object with the keys corresponding

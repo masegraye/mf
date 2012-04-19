@@ -13,7 +13,7 @@
       this.source = new ConfigurationSource(new RawConfiguration(void 0, rawConfig));
     }
 
-    Configuration.prototype._tooFancy = function() {
+    Configuration.prototype._mfConfig = function() {
       return true;
     };
 
