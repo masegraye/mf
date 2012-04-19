@@ -451,6 +451,10 @@
 
   componentLoader.registerShortcut("commons/util/uuid", "uuid");
 
+  componentLoader.registerShortcut("commons/util/configurationSource", "configurationSource");
+
+  componentLoader.registerShortcut("commons/util/rawConfiguration", "rawConfiguration");
+
   componentLoader.registerShortcut("commons/collection/hashtable", "hashtable");
 
   module.exports = mf;

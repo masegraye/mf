@@ -68,9 +68,16 @@ suite "Commons", () ->
       propThree: 0
 
     config = new Configuration(raw)
+    config.autoAccessorize raw
+
     assert.equal 1, config.get("propOne")
+    assert.equal 1, config.getPropOne()
+
     assert.equal null, config.get("propTwo")
+    assert.equal null, config.getPropTwo()
+
     assert.equal 0, config.get("propThree")
+    assert.equal 0, config.getPropThree()
 
     assert.equal 4, config.get("propFour", 4)
 
