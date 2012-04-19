@@ -16,7 +16,7 @@
 
     function DefaultingConfiguration(rawDefaultConfig, rawUserConfig) {
       var defaultConfig;
-      defaultConfig = new RawConfiguration(void 0, rawConfiguration);
+      defaultConfig = new RawConfiguration(void 0, rawDefaultConfig);
       this.source = new ConfigurationSource(new RawConfiguration(defaultConfig, rawUserConfig));
     }
 
