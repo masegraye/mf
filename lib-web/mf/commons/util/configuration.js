@@ -13,6 +13,10 @@
       this.source = new ConfigurationSource(new RawConfiguration(void 0, rawConfig));
     }
 
+    Configuration.prototype._tooFancy = function() {
+      return true;
+    };
+
     Configuration.prototype.autoAccessorize = function(schema) {
       var k, v, _results;
       var _this = this;

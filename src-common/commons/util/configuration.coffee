@@ -6,6 +6,10 @@ class Configuration
   constructor: (rawConfig) ->
     @source = new ConfigurationSource new RawConfiguration(undefined, rawConfig)
 
+  # Exists solely for the purpose of determining if this is a configuration object
+  # or not.
+  _tooFancy: ->
+    true
   # Defines get and set methods based on the configuration prototype
   # passed in. Proto is expected to be an object with the keys corresponding
   # to configuration values. This makes it easy to auto-accessorize with
