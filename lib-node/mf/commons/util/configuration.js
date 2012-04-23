@@ -18,8 +18,8 @@
     };
 
     Configuration.prototype.autoAccessorize = function(schema) {
-      var k, v, _results;
-      var _this = this;
+      var k, v, _results,
+        _this = this;
       _results = [];
       for (k in schema) {
         v = schema[k];

@@ -1,6 +1,6 @@
 (function() {
-  var Set, StateGuard, _;
-  var __slice = Array.prototype.slice;
+  var Set, StateGuard, _,
+    __slice = Array.prototype.slice;
 
   Set = require("../../mf").component("commons/collection/set");
 
@@ -20,8 +20,8 @@
     }
 
     StateGuard.prototype.require = function() {
-      var allPresent, requiredStates;
-      var _this = this;
+      var allPresent, requiredStates,
+        _this = this;
       requiredStates = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       allPresent = _.all(requiredStates, function(s) {
         return _this.recordedStates.contains(s);
@@ -33,8 +33,8 @@
     };
 
     StateGuard.prototype.prevent = function() {
-      var preventedStates, preventers;
-      var _this = this;
+      var preventedStates, preventers,
+        _this = this;
       preventedStates = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       preventers = _.any(preventedStates, function(s) {
         return _this.recordedStates.contains(s);
@@ -46,8 +46,8 @@
     };
 
     StateGuard.prototype.record = function() {
-      var newStates, validStates, _ref;
-      var _this = this;
+      var newStates, validStates, _ref,
+        _this = this;
       newStates = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       validStates = _.every(newStates, function(s) {
         return _this.possibleStates.contains(s);

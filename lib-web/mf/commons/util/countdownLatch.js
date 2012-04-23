@@ -1,6 +1,6 @@
 (function() {
-  var CountdownLatch, mf;
-  var __slice = Array.prototype.slice;
+  var CountdownLatch, mf,
+    __slice = Array.prototype.slice;
 
   mf = require("../../mf");
 

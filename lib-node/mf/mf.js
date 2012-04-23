@@ -1,6 +1,8 @@
 (function() {
-  var ComponentLoader, Log, Logger, Mf, MfCore, MfExecutionContextDetector, MfNotificationCenter, MfSequencer, MfTaskManager, componentLoader, mf;
-  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; }, __slice = Array.prototype.slice;
+  var ComponentLoader, Log, Logger, Mf, MfCore, MfExecutionContextDetector, MfNotificationCenter, MfSequencer, MfTaskManager, componentLoader, mf,
+    __hasProp = Object.prototype.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
+    __slice = Array.prototype.slice;
 
   Logger = require("jack");
 
@@ -29,9 +31,9 @@
 
     })();
 
-    WebExecutionContext = (function() {
+    WebExecutionContext = (function(_super) {
 
-      __extends(WebExecutionContext, MfExecutionContext);
+      __extends(WebExecutionContext, _super);
 
       function WebExecutionContext() {
         WebExecutionContext.__super__.constructor.apply(this, arguments);
@@ -43,11 +45,11 @@
 
       return WebExecutionContext;
 
-    })();
+    })(MfExecutionContext);
 
-    NodeExecutionContext = (function() {
+    NodeExecutionContext = (function(_super) {
 
-      __extends(NodeExecutionContext, MfExecutionContext);
+      __extends(NodeExecutionContext, _super);
 
       function NodeExecutionContext() {
         NodeExecutionContext.__super__.constructor.apply(this, arguments);
@@ -59,7 +61,7 @@
 
       return NodeExecutionContext;
 
-    })();
+    })(MfExecutionContext);
 
     MfExecutionContextDetector.prototype.hasGlobalOverride = function() {
       return typeof EXECUTION_CONTEXT !== "undefined" && EXECUTION_CONTEXT !== null;
