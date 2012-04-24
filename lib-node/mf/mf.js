@@ -451,6 +451,8 @@
 
   componentLoader.registerShortcut("commons/util/countdownLatch", "countdownLatch");
 
+  componentLoader.registerShortcut("commons/util/stateGuard", "stateGuard");
+
   componentLoader.registerShortcut("commons/util/uuid", "uuid");
 
   componentLoader.registerShortcut("commons/util/configurationSource", "configurationSource");

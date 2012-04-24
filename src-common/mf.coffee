@@ -320,6 +320,7 @@ componentLoader.registerShortcut "commons/util/componentLoader", "componentLoade
 componentLoader.registerShortcut "commons/util/configurationBuilder", "configurationBuilder"
 componentLoader.registerShortcut "commons/util/stateLatch", "stateLatch"
 componentLoader.registerShortcut "commons/util/countdownLatch", "countdownLatch"
+componentLoader.registerShortcut "commons/util/stateGuard", "stateGuard"
 componentLoader.registerShortcut "commons/util/uuid", "uuid"
 componentLoader.registerShortcut "commons/util/configurationSource", "configurationSource"
 componentLoader.registerShortcut "commons/util/rawConfiguration", "rawConfiguration"
