@@ -1,6 +1,6 @@
 (function() {
-  var Set, _;
-  var __slice = Array.prototype.slice;
+  var Set, _,
+    __slice = Array.prototype.slice;
 
   _ = require("underscore");
 

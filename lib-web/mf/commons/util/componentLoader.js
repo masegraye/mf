@@ -1,6 +1,6 @@
 (function() {
-  var ComponentLoader;
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var ComponentLoader,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   ComponentLoader = (function() {
 

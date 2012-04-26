@@ -25,20 +25,20 @@
       };
 
       MfSerializationCenter.prototype.registerHandler = function(type, handler, format) {
-        var _base, _ref;
+        var _base;
         if (format == null) format = "json";
-        if ((_ref = (_base = this.knownTypes)[type]) == null) _base[type] = {};
+        if ((_base = this.knownTypes)[type] == null) _base[type] = {};
         return this.knownTypes[type][format] = handler;
       };
 
       MfSerializationCenter.prototype.serialize = function(obj, format) {
-        var handler, type, _base, _ref;
+        var handler, type, _base;
         if (format == null) format = "json";
         type = obj.serializeAs;
         if (typeof type !== "string") {
           throw "Requested serialization of object, but object did not provide a serialization type as attribute `serializeAs'";
         }
-        if ((_ref = (_base = this.knownTypes)[type]) == null) _base[type] = {};
+        if ((_base = this.knownTypes)[type] == null) _base[type] = {};
         handler = this.knownTypes[type][format];
         if (handler == null) {
           throw "Requested serialization of type `" + type + "' to format `" + format + "', but no handler was registered";
@@ -47,9 +47,9 @@
       };
 
       MfSerializationCenter.prototype.deserialize = function(objData, type, format) {
-        var handler, _base, _ref;
+        var handler, _base;
         if (format == null) format = "json";
-        if ((_ref = (_base = this.knownTypes)[type]) == null) _base[type] = {};
+        if ((_base = this.knownTypes)[type] == null) _base[type] = {};
         handler = this.knownTypes[type][format];
         if (handler == null) {
           throw "Requested deserialization of type `" + type + "' from format `" + format + "', but no handler was registerd";

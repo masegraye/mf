@@ -1,56 +1,46 @@
 (function() {
-  var Configuration, ConfigurationSource, RawConfiguration;
+  var Configuration, ConfigurationSource, RawConfiguration, mf;
 
-  ConfigurationSource = (function() {
+  mf = require("../../mf");
 
-    function ConfigurationSource(fallback) {
-      if (!((fallback != null) && typeof fallback.get === "function")) {
-        throw "Fallback source must define method `get'";
-      }
-      this.nextSource = fallback;
-      this.values = {};
-      this.definedHere = {};
-    }
+  ConfigurationSource = mf.component("configurationSource");
 
-    ConfigurationSource.prototype.get = function(key, defaultVal) {
-      var val, _ref;
-      val = this.values[key];
-      if (!(val != null) && this.definedHere[key]) {
-        return val;
-      } else {
-        return (_ref = this.nextSource.get(key)) != null ? _ref : defaultVal;
-      }
-    };
-
-    ConfigurationSource.prototype.set = function(key, value) {
-      this.definedHere[key] = true;
-      return this.values[key] = value;
-    };
-
-    return ConfigurationSource;
-
-  })();
-
-  RawConfiguration = (function() {
-
-    function RawConfiguration(rawConfig) {
-      if (rawConfig == null) rawConfig = {};
-      this.rawConfig = rawConfig;
-    }
-
-    RawConfiguration.prototype.get = function(key) {
-      return this.rawConfig[key];
-    };
-
-    return RawConfiguration;
-
-  })();
+  RawConfiguration = mf.component("rawConfiguration");
 
   Configuration = (function() {
 
     function Configuration(rawConfig) {
-      this.source = new ConfigurationSource(new RawConfiguration(rawConfig));
+      this.source = new ConfigurationSource(new RawConfiguration(void 0, rawConfig));
     }
+
+    Configuration.prototype._mfConfig = function() {
+      return true;
+    };
+
+    Configuration.prototype.autoAccessorize = function(schema) {
+      var k, v, _results,
+        _this = this;
+      _results = [];
+      for (k in schema) {
+        v = schema[k];
+        _results.push((function(k) {
+          var mGet, mSet, mfGet;
+          mGet = "get" + (k.charAt(0).toUpperCase()) + (k.substr(1));
+          mfGet = "getf" + (k.charAt(0).toUpperCase()) + (k.substr(1));
+          mSet = "set" + (k.charAt(0).toUpperCase()) + (k.substr(1));
+          _this[mGet] = function(d) {
+            return _this.get(k, d);
+          };
+          _this[mfGet] = function(fun) {
+            return _this.getf(k, fun);
+          };
+          return _this[mSet] = function(value) {
+            return _this.set(k, value);
+          };
+        })(k));
+      }
+      return _results;
+    };
 
     Configuration.prototype.get = function(key, defaultVal) {
       return this.source.get(key, defaultVal);

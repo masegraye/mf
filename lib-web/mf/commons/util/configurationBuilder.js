@@ -1,6 +1,6 @@
 (function() {
-  var Configuration, ConfigurationBuilder, mf;
-  var __hasProp = Object.prototype.hasOwnProperty, __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (__hasProp.call(this, i) && this[i] === item) return i; } return -1; };
+  var Configuration, ConfigurationBuilder, mf,
+    __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   mf = require("../../mf");
 
@@ -18,8 +18,8 @@
     }
 
     ConfigurationBuilder.prototype.build = function() {
-      var builtConfig, config, containsAll, k, scope, scopes, union, unions, v, _fn, _i, _j, _len, _len2, _ref, _ref2;
-      var _this = this;
+      var builtConfig, config, containsAll, k, scope, scopes, union, unions, v, _fn, _i, _j, _len, _len2, _ref, _ref2,
+        _this = this;
       unions = [];
       builtConfig = {};
       _ref = this.rawConfiguration;

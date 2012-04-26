@@ -1,34 +1,38 @@
-
-class ConfigurationSource
-  constructor: (fallback) ->
-    unless fallback? and typeof fallback.get == "function"
-      throw "Fallback source must define method `get'"
-
-    @nextSource = fallback
-    @values = {}
-    @definedHere = {}
-  get: (key, defaultVal) ->
-    val = @values[key]
-    if not val? and @definedHere[key]
-      # The user has manually set it to
-      # undefined, so return undefined, preventing
-      # further cascading
-      val
-    else
-      @nextSource.get(key) ? defaultVal
-  set: (key, value) ->
-    @definedHere[key] = true
-    @values[key] = value
-
-class RawConfiguration
-  constructor: (rawConfig = {}) ->
-    @rawConfig = rawConfig
-  get: (key) ->
-    @rawConfig[key]
+mf = require("../../mf")
+ConfigurationSource = mf.component "configurationSource"
+RawConfiguration = mf.component "rawConfiguration"
 
 class Configuration
   constructor: (rawConfig) ->
-    @source = new ConfigurationSource new RawConfiguration(rawConfig)
+    @source = new ConfigurationSource new RawConfiguration(undefined, rawConfig)
+
+  # Exists solely for the purpose of determining if this is a configuration object
+  # or not.
+  _mfConfig: ->
+    true
+  # Defines get and set methods based on the configuration prototype
+  # passed in. Proto is expected to be an object with the keys corresponding
+  # to configuration values. This makes it easy to auto-accessorize with
+  # a raw object configuration.
+  #
+  # This will define the methods directly on the object, rather than the prototype, preventing
+  # leakage across objects extending Configuration.
+  autoAccessorize: (schema) ->
+    for k,v of schema
+      do (k) =>
+        mGet = "get#{k.charAt(0).toUpperCase()}#{k.substr(1)}"
+        mfGet = "getf#{k.charAt(0).toUpperCase()}#{k.substr(1)}"
+        mSet = "set#{k.charAt(0).toUpperCase()}#{k.substr(1)}"
+
+        @[mGet] = (d) =>
+          @get(k, d)
+
+        @[mfGet] = (fun) =>
+          @getf(k, fun)
+
+        @[mSet] = (value) =>
+          @set(k, value)
+
   get: (key, defaultVal) ->
     @source.get key, defaultVal
   # Like #get, but allows you to pass a fun which will be evaluated in the event
