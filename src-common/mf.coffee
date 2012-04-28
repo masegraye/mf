@@ -224,6 +224,14 @@ class MfTaskManager
       if fun?
         self.runTaskFast fun
 
+  delayer: ->
+    tick = @ticker()
+    (fun) ->
+      (args...) ->
+        tick ->
+          fun args...
+
+
 MfTaskManager::global = ->
   @_taskManager ||= new MfTaskManager("global")
 
