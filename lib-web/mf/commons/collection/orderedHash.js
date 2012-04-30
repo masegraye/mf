@@ -26,7 +26,8 @@
     };
 
     OrderedHash.prototype.get = function(k) {
-      return this._nodes[k]._obj;
+      var _ref;
+      return (_ref = this._nodes[k]) != null ? _ref._obj : void 0;
     };
 
     OrderedHash.prototype.remove = function(k) {

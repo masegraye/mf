@@ -20,7 +20,7 @@ class OrderedHash
     @_nodes[k] = node
 
   get: (k) ->
-    return @_nodes[k]._obj
+    return @_nodes[k]?._obj
 
   remove: (k) ->
     return unless node = @_nodes[k]
