@@ -277,6 +277,20 @@
       };
     };
 
+    MfTaskManager.prototype.delayer = function() {
+      var tick;
+      tick = this.ticker();
+      return function(fun) {
+        return function() {
+          var args;
+          args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+          return tick(function() {
+            return fun.apply(null, args);
+          });
+        };
+      };
+    };
+
     return MfTaskManager;
 
   })();
