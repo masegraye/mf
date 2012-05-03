@@ -85,14 +85,15 @@ class Mf
 
 # Namespace for mf.core
 class MfCore
-  shallowClone: (obj) ->
-    newObj = {}
-    newObj[k] = v for k,v of obj
-    newObj
   constructor: (mf) ->
     @mf = mf
     @klasses = {}
     @sequencers = {}
+  shallowClone: (obj) ->
+    newObj = {}
+    newObj[k] = v for k,v of obj
+    newObj
+  noop: ->
   registerKlass: (key, klass) ->
     @klasses[key] = klass
   getKlass: (key) ->

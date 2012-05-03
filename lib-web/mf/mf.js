@@ -113,6 +113,12 @@
 
   MfCore = (function() {
 
+    function MfCore(mf) {
+      this.mf = mf;
+      this.klasses = {};
+      this.sequencers = {};
+    }
+
     MfCore.prototype.shallowClone = function(obj) {
       var k, newObj, v;
       newObj = {};
@@ -123,11 +129,7 @@
       return newObj;
     };
 
-    function MfCore(mf) {
-      this.mf = mf;
-      this.klasses = {};
-      this.sequencers = {};
-    }
+    MfCore.prototype.noop = function() {};
 
     MfCore.prototype.registerKlass = function(key, klass) {
       return this.klasses[key] = klass;
