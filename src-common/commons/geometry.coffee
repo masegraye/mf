@@ -44,12 +44,16 @@ root.rect.points = (rect) ->
   ]
 
 # Returns all the whole-number points within the provided rect.
-root.rect.surfacePoints = (rect) ->
+root.rect.surfacePoints = (rect, predicate) ->
   pts = []
   for y in [0..(Math.floor(rect.size.width))]
     for x in [0..(Math.floor(rect.size.height))]
       do (x,y) ->
-        pts.push root.point.make(rect.point.x + x, rect.point.y + y)
+        if predicate?
+          if predicate(rect.point.x + x, rect.point.y + y)
+            pts.push root.point.make(rect.point.x + x, rect.point.y + y)
+        else
+          pts.push root.point.make(rect.point.x + x, rect.point.y + y)
   pts
 
 root.rect.intersects = (rect1, rect2) ->
