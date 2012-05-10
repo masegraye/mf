@@ -89,11 +89,18 @@ class MfCore
     @mf = mf
     @klasses = {}
     @sequencers = {}
+    @onces = {}
   shallowClone: (obj) ->
     newObj = {}
     newObj[k] = v for k,v of obj
     newObj
   noop: ->
+  once: (token, fun) =>
+    unless @onces[token]?
+      @onces[token] = true
+      try
+        fun()
+      catch e
   registerKlass: (key, klass) ->
     @klasses[key] = klass
   getKlass: (key) ->
