@@ -2,6 +2,7 @@
   var ComponentLoader, Log, Logger, Mf, MfCore, MfExecutionContextDetector, MfNotificationCenter, MfSequencer, MfTaskManager, componentLoader, mf,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; },
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __slice = Array.prototype.slice;
 
   Logger = require("jack");
@@ -114,9 +115,10 @@
   MfCore = (function() {
 
     function MfCore(mf) {
-      this.mf = mf;
+      this.once = __bind(this.once, this);      this.mf = mf;
       this.klasses = {};
       this.sequencers = {};
+      this.onces = {};
     }
 
     MfCore.prototype.shallowClone = function(obj) {
@@ -130,6 +132,17 @@
     };
 
     MfCore.prototype.noop = function() {};
+
+    MfCore.prototype.once = function(token, fun) {
+      if (this.onces[token] == null) {
+        this.onces[token] = true;
+        try {
+          return fun();
+        } catch (e) {
+
+        }
+      }
+    };
 
     MfCore.prototype.registerKlass = function(key, klass) {
       return this.klasses[key] = klass;
