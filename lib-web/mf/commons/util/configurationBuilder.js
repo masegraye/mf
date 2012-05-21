@@ -18,7 +18,7 @@
     }
 
     ConfigurationBuilder.prototype.build = function() {
-      var builtConfig, config, containsAll, k, scope, scopes, union, unions, v, _fn, _i, _j, _len, _len2, _ref, _ref2,
+      var builtConfig, c, config, containsAll, k, scope, scopes, union, unions, v, _fn, _i, _j, _len, _len2, _ref, _ref2,
         _this = this;
       unions = [];
       builtConfig = {};
@@ -80,7 +80,10 @@
         union = unions[_j];
         _fn(union);
       }
-      return new Configuration(builtConfig);
+      console.dir(builtConfig);
+      c = new Configuration(builtConfig);
+      c.autoAccessorize(builtConfig);
+      return c;
     };
 
     return ConfigurationBuilder;
