@@ -40,7 +40,8 @@ class ConfigurationBuilder
           if config = @rawConfiguration[unionKey]
             builtConfig[k] = v for k,v of config
 
-
-    new Configuration(builtConfig)
+    c = new Configuration(builtConfig)
+    c.autoAccessorize(builtConfig)
+    c
 
 module.exports = ConfigurationBuilder
