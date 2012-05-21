@@ -80,7 +80,6 @@
         union = unions[_j];
         _fn(union);
       }
-      console.dir(builtConfig);
       c = new Configuration(builtConfig);
       c.autoAccessorize(builtConfig);
       return c;
