@@ -2,7 +2,10 @@ class PriorityQueue
   constructor: (comparator) ->
     # root is at idx == 1 to make the arithmetic more intuitive.
     @_store      = [null]
-    @_comparator = comparator ? (x, y) -> x > y
+    @_comparator = comparator ? @highToLow
+
+  highToLow: (x, y) ->
+    x > y
 
   enqueue: (val) ->
     store = @_store

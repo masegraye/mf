@@ -5,10 +5,12 @@
 
     function PriorityQueue(comparator) {
       this._store = [null];
-      this._comparator = comparator != null ? comparator : function(x, y) {
-        return x > y;
-      };
+      this._comparator = comparator != null ? comparator : this.highToLow;
     }
+
+    PriorityQueue.prototype.highToLow = function(x, y) {
+      return x > y;
+    };
 
     PriorityQueue.prototype.enqueue = function(val) {
       var idx, store;
