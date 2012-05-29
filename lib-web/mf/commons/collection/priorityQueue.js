@@ -56,7 +56,6 @@
       if ((child != null) && !this._comparator(val = store[idx], child)) {
         store[idx] = child;
         store[childIdx] = val;
-        console.dir([idx, val, childIdx, child]);
         this.moveDown(childIdx);
         return childIdx;
       } else {
