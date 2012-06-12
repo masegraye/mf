@@ -131,6 +131,10 @@
       return newObj;
     };
 
+    MfCore.prototype.intEq = function(one, two) {
+      return (one << 0) === (two << 0);
+    };
+
     MfCore.prototype.noop = function() {};
 
     MfCore.prototype.once = function(token, fun) {

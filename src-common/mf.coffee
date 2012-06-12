@@ -94,6 +94,8 @@ class MfCore
     newObj = {}
     newObj[k] = v for k,v of obj
     newObj
+  intEq: (one, two) ->
+    (one << 0) == (two << 0)
   noop: ->
   once: (token, fun) =>
     unless @onces[token]?
