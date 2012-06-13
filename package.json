@@ -27,6 +27,7 @@
     "glob" : "= 3.1.5",
     "mocha": "= 0.10.1",
     "chai": "= 0.3.3",
+    "jsdom": "= 0.2.10",
     "phantom": "= 0.3.3"
   },
   "optionalDependencies": {}
