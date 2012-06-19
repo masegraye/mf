@@ -60,6 +60,10 @@
       return this;
     };
 
+    StateGuard.prototype.recorded = function(state) {
+      return this.recordedStates.contains(state);
+    };
+
     StateGuard.prototype.reset = function() {
       this.recordedStates.clear();
       return this.recordedStates = new Set();

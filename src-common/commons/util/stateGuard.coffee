@@ -26,6 +26,10 @@ class StateGuard
     else
       throw new Error("Invalid state specified in `record'. Valid states are: (#{@possibleStates.toString()}). Provided (#{newStates.join(", ")})")
     this
+
+  recorded: (state) ->
+    @recordedStates.contains(state)
+
   reset: ->
     @recordedStates.clear()
     @recordedStates = new Set()
