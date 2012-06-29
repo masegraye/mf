@@ -496,6 +496,8 @@
 
   componentLoader.registerShortcut("commons/collection/hashtable", "hashtable");
 
+  componentLoader.registerShortcut("commons/util/keyPair", "keyPair");
+
   module.exports = mf;
 
 }).call(this);
