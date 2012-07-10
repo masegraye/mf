@@ -325,6 +325,14 @@ class MfSequencer
   advance: ->
     @val++
 
+
+#########
+# MF ASYNC
+# Yay.
+
+AsyncCore = require("./async")
+mf.async = new AsyncCore(mf)
+
 # If we're in test mode, register some klasses for outside instantiation (but without exporting)
 # This aids in unit testing internal components without making them public
 if mf.context().testMode()
