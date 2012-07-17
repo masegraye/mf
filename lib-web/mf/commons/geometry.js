@@ -93,7 +93,7 @@
   root.rect.surfacePoints = function(rect, predicate) {
     var pts, x, y, _fn, _ref, _ref2;
     pts = [];
-    for (y = 0, _ref = Math.floor(rect.size.width); 0 <= _ref ? y <= _ref : y >= _ref; 0 <= _ref ? y++ : y--) {
+    for (y = 0, _ref = Math.floor(rect.size.height); 0 <= _ref ? y < _ref : y > _ref; 0 <= _ref ? y++ : y--) {
       _fn = function(x, y) {
         if (predicate != null) {
           if (predicate(rect.point.x + x, rect.point.y + y)) {
@@ -103,7 +103,7 @@
           return pts.push(root.point.make(rect.point.x + x, rect.point.y + y));
         }
       };
-      for (x = 0, _ref2 = Math.floor(rect.size.height); 0 <= _ref2 ? x <= _ref2 : x >= _ref2; 0 <= _ref2 ? x++ : x--) {
+      for (x = 0, _ref2 = Math.floor(rect.size.width); 0 <= _ref2 ? x < _ref2 : x > _ref2; 0 <= _ref2 ? x++ : x--) {
         _fn(x, y);
       }
     }
