@@ -42,4 +42,10 @@ class Configuration
   set: (key, val) ->
     @source.set key, val
 
+  getOrError: (key, causeText) ->
+    v = @get key
+    unless v?
+      throw new Error(causeText ? "Requested #{key} but no value provided")
+    v
+
 module.exports = Configuration

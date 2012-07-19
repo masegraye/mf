@@ -55,6 +55,15 @@
       return this.source.set(key, val);
     };
 
+    Configuration.prototype.getOrError = function(key, causeText) {
+      var v;
+      v = this.get(key);
+      if (v == null) {
+        throw new Error(causeText != null ? causeText : "Requested " + key + " but no value provided");
+      }
+      return v;
+    };
+
     return Configuration;
 
   })();
