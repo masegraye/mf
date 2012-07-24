@@ -462,6 +462,10 @@
       return this.val++;
     };
 
+    MfSequencer.prototype.reset = function() {
+      return this.val = 0;
+    };
+
     return MfSequencer;
 
   })();

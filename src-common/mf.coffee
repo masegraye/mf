@@ -324,6 +324,8 @@ class MfSequencer
     @val = 0
   advance: ->
     @val++
+  reset: ->
+    @val = 0
 
 # If we're in test mode, register some klasses for outside instantiation (but without exporting)
 # This aids in unit testing internal components without making them public
