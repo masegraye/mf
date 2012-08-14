@@ -20,7 +20,7 @@ class CountdownLatch
 
     # If they pass us a steps of 0, or a negative steps, just fire it soon.
     @_maybeFire()
-  step: (steps = 1)->
+  step: (steps = 1)=>
     @_curr += steps
     @_maybeFire()
 

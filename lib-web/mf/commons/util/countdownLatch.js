@@ -1,5 +1,6 @@
 (function() {
   var CountdownLatch, mf,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __slice = Array.prototype.slice;
 
   mf = require("../../mf");
@@ -9,6 +10,7 @@
     function CountdownLatch() {
       var args;
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      this.step = __bind(this.step, this);
       switch (args.length) {
         case 1:
           this._steps = 1;
