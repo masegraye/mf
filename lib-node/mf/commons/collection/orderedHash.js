@@ -10,6 +10,21 @@
       this._dirty = true;
     }
 
+    OrderedHash.prototype.prepend = function(k, v) {
+      var node;
+      if (this._nodes.hasOwnProperty(k)) return;
+      if (this._head) {
+        node = new Node(v, null, this._head);
+        this._head._prev = node;
+      } else {
+        node = new Node(v);
+      }
+      if (!this._tail) this._tail = node;
+      this._head = node;
+      this._dirty = true;
+      return this._nodes[k] = node;
+    };
+
     OrderedHash.prototype.append = function(k, v) {
       var node;
       if (this._nodes.hasOwnProperty(k)) return;
@@ -23,6 +38,15 @@
       this._tail = node;
       this._dirty = true;
       return this._nodes[k] = node;
+    };
+
+    OrderedHash.prototype.pop = function() {
+      var newTail, popped;
+      newTail = this._tail._prev;
+      popped = this._tail._obj;
+      this._tail = newTail;
+      this._dirty = true;
+      return popped;
     };
 
     OrderedHash.prototype.get = function(k) {
