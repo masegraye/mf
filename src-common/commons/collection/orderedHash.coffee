@@ -5,6 +5,20 @@ class OrderedHash
     @_arrayCache = []
     @_dirty      = true
 
+  prepend: (k, v) ->
+    return if @_nodes.hasOwnProperty k
+
+    if @_head
+      node         = new Node(v, null, @_head)
+      @_head._prev = node
+    else
+      node = new Node v
+
+    @_tail  = node unless @_tail
+    @_head  = node
+    @_dirty = true
+    @_nodes[k] = node
+
   append: (k, v) ->
     return if @_nodes.hasOwnProperty k
 
@@ -18,6 +32,13 @@ class OrderedHash
     @_tail  = node
     @_dirty = true
     @_nodes[k] = node
+
+  pop: ->
+    newTail = @_tail._prev
+    popped  = @_tail._obj
+    @_tail  = newTail
+    @_dirty = true
+    popped
 
   get: (k) ->
     return @_nodes[k]?._obj
