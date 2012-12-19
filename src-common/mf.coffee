@@ -347,5 +347,6 @@ componentLoader.registerShortcut "commons/util/rawConfiguration", "rawConfigurat
 componentLoader.registerShortcut "commons/util/defaultingConfiguration", "defaultingConfiguration"
 componentLoader.registerShortcut "commons/collection/hashtable", "hashtable"
 componentLoader.registerShortcut "commons/collection/hashSet", "hashSet"
+componentLoader.registerShortcut "commons/util/keyPair", "keyPair"
 
 module.exports = mf
