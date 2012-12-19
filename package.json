@@ -1,14 +1,18 @@
 {
-  "private" : true,
-  "author": "Mason Browne <mason@massivelyfun.com> (http://massivelyfun.com/people/maseb)",
-  "name": "mf",
+  "name": "mf", 
   "description": "Massively Fun JS Commons",
-  "version": "0.1.1",
-  "homepage": "http://massivelyfun.com/projects/mf",
+  "version": "0.1.0",
+  "homepage": "https://github.com/massivelyfun/mf",
   "repository": {
     "type": "git",
     "url": "git://github.com/massivelyfun/mf.git"
   },
+  "author": "Mason Browne <mason@massivelyfun.com>",
+  "contributors": [
+    { "name": "Dean Hudson", "email": "dean@massivelyfun.com"},
+    { "name": "Mason Browne", "email": "mason@massivelyfun.com"},
+    {"name": "Grant Goodale", "email": "grant@massivelyfun.com"}
+  ],
   "main": "lib-node/mf",
   "scripts": {
     "test": "cake test"
@@ -21,8 +25,8 @@
     "underscore.string": "~ 2.3.0"
   },
   "devDependencies": {
-    "mf-tools" : "git+ssh://git@github.com:massivelyfun/mf-tools.git",
-    "jack" : "git+ssh://git@github.com:massivelyfun/jack.git",
+    "mf-tools" : "~ 0.1",
+    "mf-jack" : "~ 0.1",
     "coffee-script": "~ 1.4.0",
     "glob" : "~ 3.1.5",
     "mocha": "~ 1.6.0",
