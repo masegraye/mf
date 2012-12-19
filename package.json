@@ -1,7 +1,7 @@
 {
   "name": "mf", 
   "description": "Massively Fun JS Commons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/massivelyfun/mf",
   "repository": {
     "type": "git",
@@ -9,8 +9,8 @@
   },
   "author": "Mason Browne <mason@massivelyfun.com>",
   "contributors": [
-    { "name": "Dean Hudson", "email": "dean@massivelyfun.com"},
-    { "name": "Mason Browne", "email": "mason@massivelyfun.com"},
+    {"name": "Dean Hudson", "email": "dean@massivelyfun.com"},
+    {"name": "Mason Browne", "email": "mason@massivelyfun.com"},
     {"name": "Grant Goodale", "email": "grant@massivelyfun.com"}
   ],
   "main": "lib-node/mf",

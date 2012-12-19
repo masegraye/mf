@@ -107,6 +107,17 @@ class MfCore
     @klasses[key] = klass
   getKlass: (key) ->
     return @klasses[key]
+  extend: (obj, mixin) ->
+    # use the below for an ECMA 5 environment where you may run into object
+    # property setters and getters.
+    #
+    # for key in Object.keys(mixin)
+    #   Object.defineProperty obj, Object.getOwnPropertyDescriptor(mixin, key)
+    
+    # The straightforward approach will work in ECMA 3 environments.
+    for name, method of mixin when typeof obj[name] != 'function'
+      obj[name] = method
+    obj
   # Runs the specified fun if cond evaluates to true
   # Returns the result of fun if executed, else returns nothing
   runIf: (cond, fun) ->

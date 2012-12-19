@@ -156,6 +156,15 @@
       return this.klasses[key];
     };
 
+    MfCore.prototype.extend = function(obj, mixin) {
+      var method, name;
+      for (name in mixin) {
+        method = mixin[name];
+        if (typeof obj[name] !== 'function') obj[name] = method;
+      }
+      return obj;
+    };
+
     MfCore.prototype.runIf = function(cond, fun) {
       if (typeof cond === "function") cond = cond();
       if (cond) return fun();
