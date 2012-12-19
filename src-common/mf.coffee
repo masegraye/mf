@@ -1,4 +1,4 @@
-Logger = require "jack"
+Logger = require "mf-jack"
 Log = Logger.create "mf"
 ComponentLoader = require "./commons/util/componentLoader"
 
