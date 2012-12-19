@@ -36,6 +36,21 @@ suite "MF Context Detection", () ->
     context.loader()
     assert.equal(1, loaderCalled)
 
+suite "MF Core", () ->
+  test "mf.core.extend works", () ->
+    foo =
+      foo: 'foo'
+      bar: 'bar'
+
+    thing = {}
+    assert.ok typeof thing.foo == 'undefined'
+    assert.ok typeof thing.bar == 'undefined'    
+
+    mf.core.extend thing, foo
+    
+    assert.equal thing.foo, foo.foo
+    assert.equal thing.bar, foo.bar
+
 suite "MF Messages", () ->
   test "MfMessages is defined", () ->
     assert.isObject mf.messages
