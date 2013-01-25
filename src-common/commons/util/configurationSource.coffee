@@ -6,9 +6,12 @@ class ConfigurationSource
     @nextSource = fallback
     @values = {}
     @definedHere = {}
+    
   get: (key, defaultVal) ->
     val = @values[key]
-    if not val? and @definedHere[key]
+    return val if val
+    
+    unless val? and @definedHere[key]
       # The user has manually set it to
       # undefined, so return undefined, preventing
       # further cascading
