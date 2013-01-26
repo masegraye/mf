@@ -9,16 +9,18 @@ class ConfigurationSource
     
   get: (key, defaultVal) ->
     val = @values[key]
-    return val if val
+    return val if val and @definedHere[key]
     
-    unless val? and @definedHere[key]
+    if not val? and @definedHere[key]
       # The user has manually set it to
       # undefined, so return undefined, preventing
       # further cascading
       val
     else
       @nextSource.get(key) ? defaultVal
+      
   set: (key, value) ->
+    console.log "set: #{key}, #{value}"
     @definedHere[key] = true
     @values[key] = value
 
