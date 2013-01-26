@@ -20,7 +20,6 @@ class ConfigurationSource
       @nextSource.get(key) ? defaultVal
       
   set: (key, value) ->
-    console.log "set: #{key}, #{value}"
     @definedHere[key] = true
     @values[key] = value
 

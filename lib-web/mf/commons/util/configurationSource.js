@@ -27,7 +27,6 @@
     };
 
     ConfigurationSource.prototype.set = function(key, value) {
-      console.log("set: " + key + ", " + value);
       this.definedHere[key] = true;
       return this.values[key] = value;
     };
