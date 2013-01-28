@@ -10,9 +10,12 @@ suite "Configuration", ->
     conf.set("this", "that")
     assert.equal conf.get("this"), "that"
 
-  test "Basic get", ->
+  test "Basic get with overriden default", ->
     conf = new Configuration
-      foo: 'bar'
+      foo: "bar"
 
-    assert.equal conf.get('foo'), "bar"
-    
+    assert.equal conf.get("foo"), "bar"
+    conf.set("foo", "baz")
+    assert.equal conf.get("foo"), "baz"
+    conf.set("foo", null)
+    assert.equal conf.get("foo"), null
