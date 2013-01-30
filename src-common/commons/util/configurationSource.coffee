@@ -6,11 +6,11 @@ class ConfigurationSource
     @nextSource = fallback
     @values = {}
     @definedHere = {}
-    
+
   get: (key, defaultVal) ->
     val = @values[key]
-    return val if val and @definedHere[key]
-    
+    return val if @definedHere[key]
+
     if not val? and @definedHere[key]
       # The user has manually set it to
       # undefined, so return undefined, preventing
@@ -18,7 +18,7 @@ class ConfigurationSource
       val
     else
       @nextSource.get(key) ? defaultVal
-      
+
   set: (key, value) ->
     @definedHere[key] = true
     @values[key] = value
