@@ -18,7 +18,7 @@
     "test": "cake test"
   },
   "engines": {
-    "node": "~0.8.11"
+    "node": "~0.8"
   },
   "dependencies": {
     "underscore": "~ 1.4.2",
