@@ -240,7 +240,7 @@
       this.name = name;
       this.scheduledTasks = [];
       this.periodTasks = {};
-      this.tick = typeof setImmediate !== "undefined" && setImmediate !== null ? setImmediate : (typeof process !== "undefined" && process !== null) && (process.nextTick != null) ? process.nexTick : void 0;
+      this.tick = typeof setImmediate !== "undefined" && setImmediate !== null ? setImmediate : (typeof process !== "undefined" && process !== null) && (process.nextTick != null) ? process.nextTick : void 0;
     }
 
     MfTaskManager.prototype.wrapWithHandler = function(task) {

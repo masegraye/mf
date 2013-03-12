@@ -188,7 +188,7 @@ class MfTaskManager
     @tick = if setImmediate?
       setImmediate
     else if (process? and process.nextTick?)
-      process.nexTick
+      process.nextTick
 
   wrapWithHandler: (task) ->
     ->
