@@ -185,10 +185,6 @@ class MfTaskManager
     @name = name
     @scheduledTasks = []
     @periodTasks = {}
-  # @param task - A (bound) function, or function chain
-  # @param after - Delay before executing task. A default delay of 20 gives the browser
-  #                adequate execution cycles even if iterating over this in a tight loop
-    #@canTick = (process? and process.nextTick?)
     @tick = if setImmediate?
       setImmediate
     else if (process? and process.nextTick?)
@@ -207,6 +203,13 @@ class MfTaskManager
 
   # If process and process.nextTick are defined, runs the task two ticks from now,
   # else, waits until "after" ms to run the task (via setTimeout)
+  #
+  # TODO: RAF-aware runTask* methods. Using setTimeout in the browser
+  # is funky here when you're interacting with an animation loop.
+  #
+  # @param task - A (bound) function, or function chain
+  # @param after - Delay before executing task. A default delay of 20 gives the browser
+  #                adequate execution cycles even if iterating over this in a tight loop
   runTask: (task, after) ->
     return unless task
     wrapped = @wrapWithHandler(task)
