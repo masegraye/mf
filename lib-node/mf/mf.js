@@ -240,7 +240,7 @@
       this.name = name;
       this.scheduledTasks = [];
       this.periodTasks = {};
-      this.canTick = (typeof process !== "undefined" && process !== null) && (process.nextTick != null);
+      this.tick = typeof setImmediate !== "undefined" && setImmediate !== null ? setImmediate : (typeof process !== "undefined" && process !== null) && (process.nextTick != null) ? process.nextTick : void 0;
     }
 
     MfTaskManager.prototype.wrapWithHandler = function(task) {
@@ -261,14 +261,14 @@
     };
 
     MfTaskManager.prototype.runTask = function(task, after) {
-      var wrapped;
+      var tick, wrapped;
       if (!task) {
         return;
       }
       wrapped = this.wrapWithHandler(task);
-      if (this.canTick && !(after != null)) {
-        return process.nextTick(function() {
-          return process.nextTick(wrapped);
+      if (tick = this.tick && !(after != null)) {
+        return tick(function() {
+          return tick(wrapped);
         });
       } else {
         if (after == null) {
@@ -283,9 +283,9 @@
       if (!task) {
         return;
       }
-      if (this.canTick) {
+      if (this.tick) {
         wrapped = this.wrapWithHandler(task);
-        return process.nextTick(wrapped);
+        return this.tick(wrapped);
       } else {
         return this.runTask(task, 4);
       }

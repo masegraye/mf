@@ -113,7 +113,7 @@ class MfCore
     #
     # for key in Object.keys(mixin)
     #   Object.defineProperty obj, Object.getOwnPropertyDescriptor(mixin, key)
-    
+
     # The straightforward approach will work in ECMA 3 environments.
     for name, method of mixin when typeof obj[name] != 'function'
       obj[name] = method
@@ -185,10 +185,11 @@ class MfTaskManager
     @name = name
     @scheduledTasks = []
     @periodTasks = {}
-  # @param task - A (bound) function, or function chain
-  # @param after - Delay before executing task. A default delay of 20 gives the browser
-  #                adequate execution cycles even if iterating over this in a tight loop
-    @canTick = (process? and process.nextTick?)
+    @tick = if setImmediate?
+      setImmediate
+    else if (process? and process.nextTick?)
+      process.nextTick
+
   wrapWithHandler: (task) ->
     ->
       try
@@ -202,13 +203,20 @@ class MfTaskManager
 
   # If process and process.nextTick are defined, runs the task two ticks from now,
   # else, waits until "after" ms to run the task (via setTimeout)
+  #
+  # TODO: RAF-aware runTask* methods. Using setTimeout in the browser
+  # is funky here when you're interacting with an animation loop.
+  #
+  # @param task - A (bound) function, or function chain
+  # @param after - Delay before executing task. A default delay of 20 gives the browser
+  #                adequate execution cycles even if iterating over this in a tight loop
   runTask: (task, after) ->
     return unless task
     wrapped = @wrapWithHandler(task)
-    if @canTick and not after?
+    if tick = @tick and not after?
       # Just wait two ticks
-      process.nextTick ->
-        process.nextTick wrapped
+      tick ->
+        tick wrapped
     else
       after ?= 20
       setTimeout wrapped, after
@@ -216,10 +224,10 @@ class MfTaskManager
   # else, runs the task 4 ms from now via setTimeout
   runTaskFast: (task) ->
     return unless task
-    if @canTick
+    if @tick
       # Next tick
       wrapped = @wrapWithHandler(task)
-      process.nextTick wrapped
+      @tick wrapped
     else
       @runTask(task, 4)
   # runTaskNow tries to execute the task as quickly as the browser supports. In most

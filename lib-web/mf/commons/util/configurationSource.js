@@ -16,7 +16,7 @@
     ConfigurationSource.prototype.get = function(key, defaultVal) {
       var val, _ref;
       val = this.values[key];
-      if (val && this.definedHere[key]) {
+      if (this.definedHere[key]) {
         return val;
       }
       if (!(val != null) && this.definedHere[key]) {
